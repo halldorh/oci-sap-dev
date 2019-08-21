@@ -100,10 +100,6 @@ resource "oci_core_subnet" "bastion_public_subnets" {
   dns_label         = var.bastion_subnet_label
   route_table_id    = oci_core_route_table.PublicRT.id
   security_list_ids = [oci_core_security_list.BastionSecList.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
 }
 
 # SAP Web Dispatcher Public Subnet
@@ -115,10 +111,6 @@ resource "oci_core_subnet" "sap_web_public_subnets" {
   dns_label         = var.sap_web_subnet_label
   route_table_id    = oci_core_route_table.PublicRT.id
   security_list_ids = [oci_core_security_list.SAP_WebSecList.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
 }
 
 # SAP Router Private Subnet
@@ -131,10 +123,6 @@ resource "oci_core_subnet" "sap_route_private_subnets" {
   prohibit_public_ip_on_vnic = "true"
   route_table_id             = oci_core_route_table.SAP_PrivateRT.id
   security_list_ids          = [oci_core_security_list.SAP_RouterSecList.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
 }
 
 # SAP Application Private Subnet
@@ -147,10 +135,6 @@ resource "oci_core_subnet" "sap_private_subnets" {
   prohibit_public_ip_on_vnic = "true"
   route_table_id             = oci_core_route_table.SAP_PrivateRT.id
   security_list_ids          = [oci_core_security_list.SAP_AppSecList.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
 }
 
 # Database Private Subnet
@@ -163,10 +147,6 @@ resource "oci_core_subnet" "db_private_subnets" {
   prohibit_public_ip_on_vnic = "true"
   route_table_id             = oci_core_route_table.DB_PrivateRT.id
   security_list_ids          = [oci_core_security_list.DBSecList.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
 }
 
 # FSS Private Subnet
@@ -179,10 +159,6 @@ resource "oci_core_subnet" "fss_private_subnets" {
   prohibit_public_ip_on_vnic = "true"
   route_table_id             = oci_core_route_table.FSS_PrivateRT.id
   security_list_ids          = [oci_core_security_list.FSS_AppSecList.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
 }
 
 # Load Balancer Subnets
@@ -194,9 +170,5 @@ resource "oci_core_subnet" "lb_subnet" {
   dns_label         = var.lb_subnet_label
   route_table_id    = oci_core_route_table.PublicRT.id
   security_list_ids = [oci_core_security_list.LB_SecList.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
 }
 

@@ -47,10 +47,6 @@ resource "null_resource" "connect_to_sap_app_instance" {
     bastion_private_key = chomp(file(var.ssh_private_key))
   }
 
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
-
   provisioner "file" {
     source      = "script-sap-app.sh"
     destination = "/tmp/script-sap-app.sh"
@@ -94,10 +90,6 @@ resource "null_resource" "connect_to_sap_db_instance" {
     bastion_host        = oci_core_instance.bastion_linux_instances.public_ip
     bastion_user        = "opc"
     bastion_private_key = chomp(file(var.ssh_private_key))
-  }
-
-  provisioner "local-exec" {
-    command = "sleep 15"
   }
 
   provisioner "file" {
