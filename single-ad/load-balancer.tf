@@ -25,6 +25,10 @@ resource "oci_load_balancer_backend_set" "lb_backend_set" {
     response_body_regex = ".*"
     url_path            = "/sap/wdisp/admin/public/default.html"
   }
+
+  provisioner "local-exec" {
+    command = "sleep 5"
+  }
 }
 
 resource "oci_load_balancer_listener" "lb_listener" {
@@ -37,6 +41,10 @@ resource "oci_load_balancer_listener" "lb_listener" {
   connection_configuration {
     idle_timeout_in_seconds = "2"
   }
+
+  provisioner "local-exec" {
+    command = "sleep 5"
+  }
 }
 
 resource "oci_load_balancer_backend" "lb_backend" {
@@ -48,5 +56,9 @@ resource "oci_load_balancer_backend" "lb_backend" {
   drain            = false
   offline          = false
   weight           = 1
+
+  provisioner "local-exec" {
+    command = "sleep 5"
+  }
 }
 

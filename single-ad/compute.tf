@@ -20,6 +20,10 @@ resource "oci_core_instance" "bastion_linux_instances" {
   metadata = {
     ssh_authorized_keys = chomp(file(var.ssh_public_key))
   }
+
+  provisioner "local-exec" {
+    command = "sleep 5"
+  }
 }
 
 # SAP Router Instances
@@ -40,6 +44,10 @@ resource "oci_core_instance" "sap_router_instances" {
 
   metadata = {
     ssh_authorized_keys = chomp(file(var.ssh_public_key))
+  }
+
+  provisioner "local-exec" {
+    command = "sleep 5"
   }
 }
 
@@ -62,6 +70,10 @@ resource "oci_core_instance" "sap_web_dis_instances" {
   metadata = {
     ssh_authorized_keys = chomp(file(var.ssh_public_key))
   }
+
+  provisioner "local-exec" {
+    command = "sleep 10"
+  }
 }
 
 # SAP Linux Application Instance
@@ -82,6 +94,10 @@ resource "oci_core_instance" "sap_linux_instances" {
 
   metadata = {
     ssh_authorized_keys = chomp(file(var.ssh_public_key))
+  }
+
+  provisioner "local-exec" {
+    command = "sleep 10"
   }
 }
 

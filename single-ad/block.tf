@@ -11,6 +11,7 @@ resource "oci_core_volume" "sap_app_block" {
 
 resource "oci_core_volume_attachment" "sap_app_block_attach" {
   attachment_type = "paravirtualized"
+  compartment_id  = var.compartment_ocid
   instance_id     = oci_core_instance.sap_linux_instances.id
   volume_id       = oci_core_volume.sap_app_block.id
 }
@@ -25,6 +26,7 @@ resource "oci_core_volume" "sap_app_block_swap" {
 
 resource "oci_core_volume_attachment" "sap_app_block_attach_swap" {
   attachment_type = "paravirtualized"
+  compartment_id  = var.compartment_ocid
   instance_id     = oci_core_instance.sap_linux_instances.id
   volume_id       = oci_core_volume.sap_app_block_swap.id
 }
@@ -39,6 +41,7 @@ resource "oci_core_volume" "sap_db_block_swap" {
 
 resource "oci_core_volume_attachment" "sap_db_block_attach_swap" {
   attachment_type = "iscsi"
+  compartment_id  = var.compartment_ocid
   instance_id     = oci_core_instance.db_linux_instances.id
   volume_id       = oci_core_volume.sap_db_block_swap.id
 
